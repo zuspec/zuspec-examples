@@ -1,0 +1,10 @@
+
+import std_pkg::*;
+
+component pss_top {
+    action Hello {
+        exec body {
+            message(0, "Hello World!");
+        }
+    }
+}

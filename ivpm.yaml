@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://fvutils.github.io/ivpm/ivpm.json
+
+package:
+  name: zuspec-examples
+
+  dep-sets:
+  - name: default-dev
+    deps:
+    - name: zuspec-sv
+      src: pypi
+    - name: verilator
+      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.030.12537669638/verilator-ubuntu-x64-5.030.12537669638.tar.gz
+
+  - name: default-src
+    deps:
+    - name: zuspec-sv
+      url: https://github.com/zuspec/zuspec-sv.git
+      dep-set: default-dev
+    - name: verilator
+      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.030.12537669638/verilator-ubuntu-x64-5.030.12537669638.tar.gz
+
+  env:
+    - name: PATH
+      path-prepend: ${IVPM_PACKAGES}/verilator/bin
