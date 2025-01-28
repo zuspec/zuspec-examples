@@ -13,7 +13,7 @@ verilator --binary -o simv -Wno-fatal -j $(nproc) \
 	+incdir+${share_dir}/include/zsp/sv/zsp_sv \
 	${share_dir}/include/zsp/sv/zsp_sv/zsp_sv.sv \
 	pss_top_sv.sv \
-	top.sv
+	${script_dir}/top.sv
 if test $? -ne 0; then exit 1; fi
 
 (set -o pipefail ; ./obj_dir/simv 2>&1 | tee sim.log)

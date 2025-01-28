@@ -14,7 +14,7 @@ vlog -sv \
 	+incdir+${share_dir}/include/zsp/sv/zsp_sv \
 	${share_dir}/include/zsp/sv/zsp_sv/zsp_sv.sv \
 	pss_top_sv.sv \
-	top.sv
+	${script_dir}/top.sv
 if test $? -ne 0; then exit 1; fi
 
 vopt -o top_opt top
