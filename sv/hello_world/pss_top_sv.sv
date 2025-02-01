@@ -6,302 +6,8 @@ package pss_types;
     // TODO: define model-specific executor class
     typedef executor_base executor_base_c;
     typedef executor_base executor_t;
-    typedef class executor_pkg__executor_trait_s;
-    typedef class executor_pkg__empty_executor_trait_s;
-    typedef class executor_pkg__executor_base_c;
-    typedef class addr_reg_pkg__addr_space_base_c;
-    typedef class addr_reg_pkg__addr_trait_s;
-    typedef class addr_reg_pkg__empty_addr_trait_s;
-    typedef class addr_reg_pkg__addr_region_base_s;
-    typedef class addr_reg_pkg__addr_claim_base_s;
-    typedef class addr_reg_pkg__reg_group_c;
     typedef class pss_top;
     typedef class pss_top__Hello;
-    
-    class executor_pkg__executor_trait_s extends object;
-        
-        function new();
-        endfunction
-        
-        virtual function void dtor();
-        endfunction
-        
-        virtual function void init(executor_base exec_b);
-        endfunction
-        virtual function void __assign__(executor_pkg__executor_trait_s rhs);
-        endfunction
-        
-        static function executor_pkg__executor_trait_s create_default();
-            executor_pkg__executor_trait_s ret = new();
-            return ret;
-        endfunction
-        
-        static function executor_pkg__executor_trait_s create_init();
-            executor_pkg__executor_trait_s ret = new();
-            return ret;
-        endfunction
-        function void do_pre_solve();
-            pre_solve();
-        endfunction
-        function void do_post_solve(executor_base exec_b);
-            post_solve(exec_b);
-        endfunction
-    endclass
-    
-    class executor_pkg__empty_executor_trait_s extends object;
-        
-        function new();
-        endfunction
-        
-        virtual function void dtor();
-        endfunction
-        
-        virtual function void init(executor_base exec_b);
-        endfunction
-        virtual function void __assign__(executor_pkg__empty_executor_trait_s rhs);
-        endfunction
-        
-        static function executor_pkg__empty_executor_trait_s create_default();
-            executor_pkg__empty_executor_trait_s ret = new();
-            return ret;
-        endfunction
-        
-        static function executor_pkg__empty_executor_trait_s create_init();
-            executor_pkg__empty_executor_trait_s ret = new();
-            return ret;
-        endfunction
-        function void do_pre_solve();
-            pre_solve();
-        endfunction
-        function void do_post_solve(executor_base exec_b);
-            post_solve(exec_b);
-        endfunction
-    endclass
-    
-    class executor_pkg__executor_base_c extends component_c;
-        `zsp_typed_obj_util(executor_pkg__executor_base_c)
-        
-        function new(string name, component_ctor_ctxt ctxt, component_c parent=null);
-            super.new(name, ctxt, parent);
-            
-            if (ctxt != null) begin
-                ctxt.enter(this);
-            end
-            executor_m = new[ctxt.executor_m.size()](ctxt.executor_m);
-            // Note: 'enter' handled by the component_c constructor
-            ctxt.leave(this);
-        endfunction
-        
-        
-        
-        function void do_init(executor_base exec_b);
-            init_down(exec_b);
-            init_up(exec_b);
-        endfunction
-        
-        
-        
-        virtual function bit check();
-            bit ret = 1;
-            return ret;
-        endfunction
-    endclass
-    
-    class addr_reg_pkg__addr_space_base_c extends component_c;
-        `zsp_typed_obj_util(addr_reg_pkg__addr_space_base_c)
-        
-        function new(string name, component_ctor_ctxt ctxt, component_c parent=null);
-            super.new(name, ctxt, parent);
-            
-            if (ctxt != null) begin
-                ctxt.enter(this);
-            end
-            executor_m = new[ctxt.executor_m.size()](ctxt.executor_m);
-            // Note: 'enter' handled by the component_c constructor
-            ctxt.leave(this);
-        endfunction
-        
-        
-        
-        function void do_init(executor_base exec_b);
-            init_down(exec_b);
-            init_up(exec_b);
-        endfunction
-        
-        
-        
-        virtual function bit check();
-            bit ret = 1;
-            return ret;
-        endfunction
-    endclass
-    
-    class addr_reg_pkg__addr_trait_s extends object;
-        
-        function new();
-        endfunction
-        
-        virtual function void dtor();
-        endfunction
-        
-        virtual function void init(executor_base exec_b);
-        endfunction
-        virtual function void __assign__(addr_reg_pkg__addr_trait_s rhs);
-        endfunction
-        
-        static function addr_reg_pkg__addr_trait_s create_default();
-            addr_reg_pkg__addr_trait_s ret = new();
-            return ret;
-        endfunction
-        
-        static function addr_reg_pkg__addr_trait_s create_init();
-            addr_reg_pkg__addr_trait_s ret = new();
-            return ret;
-        endfunction
-        function void do_pre_solve();
-            pre_solve();
-        endfunction
-        function void do_post_solve(executor_base exec_b);
-            post_solve(exec_b);
-        endfunction
-    endclass
-    
-    class addr_reg_pkg__empty_addr_trait_s extends object;
-        
-        function new();
-        endfunction
-        
-        virtual function void dtor();
-        endfunction
-        
-        virtual function void init(executor_base exec_b);
-        endfunction
-        virtual function void __assign__(addr_reg_pkg__empty_addr_trait_s rhs);
-        endfunction
-        
-        static function addr_reg_pkg__empty_addr_trait_s create_default();
-            addr_reg_pkg__empty_addr_trait_s ret = new();
-            return ret;
-        endfunction
-        
-        static function addr_reg_pkg__empty_addr_trait_s create_init();
-            addr_reg_pkg__empty_addr_trait_s ret = new();
-            return ret;
-        endfunction
-        function void do_pre_solve();
-            pre_solve();
-        endfunction
-        function void do_post_solve(executor_base exec_b);
-            post_solve(exec_b);
-        endfunction
-    endclass
-    
-    
-    class addr_reg_pkg__addr_region_base_s extends addr_region_base_s;
-        
-        function new();
-        endfunction
-        
-        virtual function void dtor();
-        endfunction
-        
-        virtual function void init(executor_base exec_b);
-        endfunction
-        virtual function void __assign__(addr_reg_pkg__addr_region_base_s rhs);
-            size = rhs.size;
-        endfunction
-        
-        static function addr_reg_pkg__addr_region_base_s create_default();
-            addr_reg_pkg__addr_region_base_s ret = new();
-            return ret;
-        endfunction
-        
-        static function addr_reg_pkg__addr_region_base_s create_init(
-                longint unsigned size);
-            addr_reg_pkg__addr_region_base_s ret = new();
-            ret.size = size;
-            return ret;
-        endfunction
-        function void do_pre_solve();
-            pre_solve();
-        endfunction
-        function void do_post_solve(executor_base exec_b);
-            post_solve(exec_b);
-        endfunction
-    endclass
-    
-    class addr_reg_pkg__addr_claim_base_s extends object;
-        rand bit[63:0] size;
-        rand bit permanent;
-        
-        function new();
-        endfunction
-        
-        virtual function void dtor();
-        endfunction
-        
-        virtual function void init(executor_base exec_b);
-        endfunction
-        virtual function void __assign__(addr_reg_pkg__addr_claim_base_s rhs);
-            size = rhs.size;
-            permanent = rhs.permanent;
-        endfunction
-        
-        static function addr_reg_pkg__addr_claim_base_s create_default();
-            addr_reg_pkg__addr_claim_base_s ret = new();
-            return ret;
-        endfunction
-        
-        static function addr_reg_pkg__addr_claim_base_s create_init(
-                longint unsigned size,
-                bit permanent);
-            addr_reg_pkg__addr_claim_base_s ret = new();
-            ret.size = size;
-            ret.permanent = permanent;
-            return ret;
-        endfunction
-        constraint c_0x1d2ca130 {
-        }
-        function void do_pre_solve();
-            pre_solve();
-        endfunction
-        function void do_post_solve(executor_base exec_b);
-            post_solve(exec_b);
-        endfunction
-    endclass
-    
-    class addr_reg_pkg__reg_group_c extends reg_group_c;
-        static addr_reg_pkg__reg_group_c prv_inst;
-        
-        function new(executor_base exec_b);
-            super.new();
-            
-            map_registers(exec_b);
-        endfunction
-        
-        virtual function longint unsigned get_offset_of_instance(
-                input executor_base exec_b,
-                input string name);
-        endfunction
-        
-        virtual function longint unsigned get_offset_of_instance_array(
-                input executor_base exec_b,
-                input string name,
-                input int index);
-        endfunction
-        
-        virtual function void set_handle(
-                input executor_base exec_b,
-                input addr_handle_t addr);
-        endfunction
-        
-        static function addr_reg_pkg__reg_group_c inst(executor_base exec_b);
-            if (prv_inst == null) begin
-                prv_inst = new(exec_b);
-            end
-            return prv_inst;
-        endfunction
-    endclass
     
     class pss_top extends component_c;
         `zsp_typed_obj_util(pss_top)
@@ -347,6 +53,14 @@ package pss_types;
         function void do_pre_solve();
             pre_solve();
         endfunction
+        function void post_solve(executor_base exec_b);
+            executor_t executor;
+            $cast(executor, exec_b);
+            begin
+                `zsp_print(exec_b, ("Hello World (1)\n"));
+            end
+        endfunction
+        
         function void do_post_solve(executor_base exec_b);
             post_solve(exec_b);
         endfunction
@@ -354,7 +68,7 @@ package pss_types;
             executor_t executor;
             $cast(executor, exec_b);
             begin
-                begin message_verbosity_e v = message_verbosity_e'(32'h0); if (exec_b.get_actor().verbosity >= v) exec_b.get_api().message($sformatf("Hello World!")); end ;
+                `zsp_message(exec_b, 32'h0, ("Hello World!"));
             end
         endtask
         
@@ -369,6 +83,7 @@ package pss_types;
     endclass
     
     
+    
     class pss_import_api #(type BaseT=zsp_sv::empty_t) extends backend_api #(BaseT);
     endclass
     
@@ -380,9 +95,9 @@ package pss_top__Entry_prv;
     
     typedef class pss_top__Entry_actor;
     typedef pss_top__Entry_actor actor_t;
-    typedef class activity_0x1d2fc7c0;
+    typedef class activity_0x37127930;
     
-    class activity_0x1d2fc7c0 extends activity_c;
+    class activity_0x37127930 extends activity_c;
         function new(actor_c actor, component_c parent_comp);
             super.new(actor, parent_comp);
         endfunction
@@ -412,7 +127,7 @@ package pss_top__Entry_prv;
         endfunction
         
         virtual task run();
-            activity_0x1d2fc7c0 root_activity = new(this, comp_tree);
+            activity_0x37127930 root_activity = new(this, comp_tree);
             
             comp_tree.init(this.default_executor);
             comp_tree.do_init(this.default_executor);
