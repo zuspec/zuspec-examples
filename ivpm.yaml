@@ -8,6 +8,8 @@ package:
     deps:
     - name: zuspec-sv
       src: pypi
+      #- name: zuspec-fe-parser
+      #url: https://github.com/zuspec/zuspec-fe-parser.git
     - name: verilator
       url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.030.12537669638/verilator-ubuntu-x64-5.030.12537669638.tar.gz
 
@@ -17,7 +19,7 @@ package:
       url: https://github.com/zuspec/zuspec-sv.git
       dep-set: default-dev
     - name: verilator
-      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.030.12537669638/verilator-ubuntu-x64-5.030.12537669638.tar.gz
+      url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.032.13102529469/verilator-manylinux-x64-5.032.13102529469.tar.gz
 
   env:
     - name: PATH

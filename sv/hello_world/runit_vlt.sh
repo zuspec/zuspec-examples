@@ -4,9 +4,9 @@ script_dir=$(dirname $(realpath $0))
 
 share_dir=$(zuspec synth.sv.share)
 
-#PYTHONMALLOC=malloc valgrind --tool=memcheck python3 -m zuspec.cli synth.sv.actor ${script_dir}/hello_world.pss -action pss_top::Hello
-#PYTHONMALLOC=malloc gdb --args python3 -m zuspec.cli synth.sv.actor ${script_dir}/hello_world.pss -action pss_top::Hello
-zuspec synth.sv.actor -d ${script_dir}/hello_world.pss -action pss_top::Hello
+#PYTHONMALLOC=malloc valgrind --tool=memcheck python3 -m zuspec.cli synth.sv.actor -d ${script_dir}/hello_world.pss -action pss_top::Hello
+#PYTHONMALLOC=malloc gdb --args python3 -m zuspec.cli synth.sv.actor -d ${script_dir}/hello_world.pss -action pss_top::Hello
+zuspec synth.sv.actor ${script_dir}/hello_world.pss -action pss_top::Hello
 if test $? -ne 0; then exit 1; fi
 
 verilator --binary -o simv -Wno-fatal -j $(nproc) \

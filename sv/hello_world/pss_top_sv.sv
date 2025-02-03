@@ -53,14 +53,6 @@ package pss_types;
         function void do_pre_solve();
             pre_solve();
         endfunction
-        function void post_solve(executor_base exec_b);
-            executor_t executor;
-            $cast(executor, exec_b);
-            begin
-                `zsp_print(exec_b, ("Hello World (1)\n"));
-            end
-        endfunction
-        
         function void do_post_solve(executor_base exec_b);
             post_solve(exec_b);
         endfunction
@@ -95,9 +87,9 @@ package pss_top__Entry_prv;
     
     typedef class pss_top__Entry_actor;
     typedef pss_top__Entry_actor actor_t;
-    typedef class activity_0x37127930;
+    typedef class activity_0x138ecb50;
     
-    class activity_0x37127930 extends activity_c;
+    class activity_0x138ecb50 extends activity_c;
         function new(actor_c actor, component_c parent_comp);
             super.new(actor, parent_comp);
         endfunction
@@ -127,7 +119,7 @@ package pss_top__Entry_prv;
         endfunction
         
         virtual task run();
-            activity_0x37127930 root_activity = new(this, comp_tree);
+            activity_0x138ecb50 root_activity = new(this, comp_tree);
             
             comp_tree.init(this.default_executor);
             comp_tree.do_init(this.default_executor);
