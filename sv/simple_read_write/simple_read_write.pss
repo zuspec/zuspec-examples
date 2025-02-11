@@ -1,0 +1,17 @@
+
+//import function void bfm_write(input bit [32] addr, input bit [32] data);
+import target function void bfm_write(input bit [32] addr, input bit [32] data);
+import target function bit[32] bfm_read(input bit [32] addr);
+
+component pss_top {
+
+    action Entry {
+        exec body {
+            bit[32] data;
+            bfm_write(0, 0x12345678);
+            bfm_write(4, 0x12345678);
+            data = bfm_read(4);
+            message(LOW, "PSS read data %d", data);
+        }
+    }
+}
