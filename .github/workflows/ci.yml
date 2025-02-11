@@ -21,6 +21,7 @@ jobs:
             export PATH=$(pwd)/packages/verilator/bin:${PATH}
 
             ./sv/hello_world/runit_vlt.sh
+            ./sv/simple_read_write/runit_vlt.sh
 
 
 
