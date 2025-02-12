@@ -1,5 +1,4 @@
 
-//import function void bfm_write(input bit [32] addr, input bit [32] data);
 import target function void bfm_write(input bit [32] addr, input bit [32] data);
 import target function bit[32] bfm_read(input bit [32] addr);
 
