@@ -1,0 +1,34 @@
+
+# yaml-language-server: $schema=https://dv-flow.github.io/flow.dv.schema.json
+
+package:
+  name: hello-world
+
+  tasks:
+  - name: pss
+    uses: std.FileSet
+    with: { type: pssSource, include: [hello_world.pss] }
+
+  - name: pss-sv-gen
+    uses: pss.zsp.GenModelSV
+    with: { root_action: pss_top::Hello }
+    needs: [pss, pss.zsp.RuntimeSV]
+
+  - name: bench-sv
+    uses: std.FileSet
+    with: { type: systemVerilogSource, include: "top.sv" }
+    needs: [pss-sv-gen]
+
+  - name: sim-img
+    uses: hdlsim.vlt.SimImage
+    needs: [bench-sv]
+    with: { top: [top] }
+    order:
+      # Set of 'additional dependencies' to order processing
+      bench-sv:
+      - pss-sv-gen
+
+  - name: sim-run
+    uses: hdlsim.vlt.SimRun
+    needs: [sim-img]
+

@@ -12,11 +12,22 @@ package:
       #url: https://github.com/zuspec/zuspec-fe-parser.git
     - name: verilator
       url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.030.12537669638/verilator-ubuntu-x64-5.030.12537669638.tar.gz
+    - name: fwvip-wb
+      url: https://github.com/featherweight-vip/fwvip-wb.git
 
   - name: default-src
     deps:
     - name: zuspec-sv
       url: https://github.com/zuspec/zuspec-sv.git
+      dep-set: default-dev-src
+    - name: dv-flow-mgr
+      url: https://github.com/dv-flow/dv-flow-mgr.git
+      dep-set: default-dev
+    - name: dv-flow-libhdlsim
+      url: https://github.com/dv-flow/dv-flow-libhdlsim.git
+      dep-set: default-dev
+    - name: dv-flow-libpss
+      url: https://github.com/dv-flow/dv-flow-libpss.git
       dep-set: default-dev
     - name: verilator
       url: https://github.com/pss-hands-on/verilator-bin/releases/download/v5.032.13102529469/verilator-manylinux-x64-5.032.13102529469.tar.gz

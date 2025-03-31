@@ -172,4 +172,7 @@ cython_debug/
 packages/
 
 obj_dir/
+xelab.*
+xvlog.*
+xsim.*/
 
