@@ -37,7 +37,7 @@ if ! test -d ${examples_dir}/packages; then
   fi
 
   echo "Loading packages..."
-  ${examples_dir}/packages/python/bin/ivpm update -a --py-prerls-packages
+  ${examples_dir}/packages/python/bin/ivpm update -a # --py-prerls-packages
   if test $? -ne 0; then
     echo "Package installation failed"
     rm -rf ${examples_dir}/packages
