@@ -1,0 +1,38 @@
+
+# yaml-language-server: $schema=https://dv-flow.github.io/flow.dv.schema.json
+
+package:
+  name: hello-world
+
+  tasks:
+  - name: pss
+    uses: std.FileSet
+    with: { type: pssSource, include: [simple_read_write.pss] }
+
+  - name: pss-model-sv
+    uses: pss.zsp.GenModelSV
+    needs: [pss, pss.zsp.RuntimeSV]
+
+  - name: pss-actor-sv
+    uses: pss.zsp.GenActorSV
+    with: { root_action: pss_top::Entry }
+    needs: [pss-model-sv]
+
+  - name: bench-sv
+    uses: std.FileSet
+    with: { type: systemVerilogSource, include: "simple_read_write.sv" }
+    needs: [pss-actor-sv]
+
+  - name: sim-img
+    uses: hdlsim.vlt.SimImage
+    needs: [bench-sv]
+    with: { top: [simple_read_write] }
+    order:
+      # Set of 'additional dependencies' to order processing
+      bench-sv:
+      - pss-sv-gen
+
+  - name: sim-run
+    uses: hdlsim.vlt.SimRun
+    needs: [sim-img]
+
